@@ -9,11 +9,11 @@ abstract class FilteredTodosState extends Equatable {
 
 class FilteredTodosLoadInProgress extends FilteredTodosState {}
 
-class FilteredTodosLoadSuccessful extends FilteredTodosState {
+class FilteredTodosLoadSuccess extends FilteredTodosState {
   final List<Todo> filteredTodos;
   final VisibilityFilter activeFilter;
 
-  const FilteredTodosLoadSuccessful(
+  const FilteredTodosLoadSuccess(
     this.filteredTodos,
     this.activeFilter,
   );
