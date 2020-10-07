@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_todos/models/models.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter_todos/blocs/blocs.dart';
 
 import 'package:todos_repository_simple/todos_repository_simple.dart';
 
@@ -56,7 +55,7 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
   Stream<TodosState> _mapTodoUpdatedToState(TodoUpdated event) async* {
     if (state is TodosLoadSuccess) {
       final List<Todo> updatedTodos = (state as TodosLoadSuccess).todos.map((todo) {
-        return todo.id == event.updatedTodo.id ? event.updatedTodo : todo;
+        return todo.id == event.todo.id ? event.todo : todo;
       }).toList();
       yield TodosLoadSuccess(updatedTodos);
       _saveTodos(updatedTodos);
